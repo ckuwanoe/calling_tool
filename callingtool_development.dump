@@ -1,0 +1,282 @@
+-- MySQL dump 10.13  Distrib 5.1.37, for apple-darwin9.5.0 (i386)
+--
+-- Host: localhost    Database: callingtool_development
+-- ------------------------------------------------------
+-- Server version	5.1.37
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `answers`
+--
+
+DROP TABLE IF EXISTS `answers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `answers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `question_id` int(11) DEFAULT NULL,
+  `content` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `answers`
+--
+
+LOCK TABLES `answers` WRITE;
+/*!40000 ALTER TABLE `answers` DISABLE KEYS */;
+INSERT INTO `answers` VALUES (5,2,'1','2010-01-22 22:20:13','2010-01-22 22:20:13'),(6,2,'2','2010-01-22 22:20:13','2010-01-22 22:20:13'),(7,2,'3','2010-01-22 22:20:13','2010-01-22 22:20:13'),(8,3,'ans 1','2010-01-25 00:42:05','2010-01-25 00:42:05'),(9,3,'ans 2','2010-01-25 00:42:05','2010-01-25 00:42:05'),(10,3,'ans 3','2010-01-25 00:42:05','2010-01-25 00:42:05'),(11,4,'Ans radio 1','2010-01-28 19:48:20','2010-01-28 19:48:20'),(12,4,'Ans radio 2','2010-01-28 19:48:20','2010-01-28 19:48:20'),(13,5,'Yes ','2010-02-03 19:20:55','2010-02-03 19:20:55'),(14,5,'No','2010-02-03 19:20:55','2010-02-03 19:20:55'),(15,6,'cheese','2010-02-03 19:20:55','2010-02-03 19:20:55'),(16,6,'pepperoni','2010-02-03 19:20:55','2010-02-03 19:20:55'),(17,6,'your mom','2010-02-03 19:20:56','2010-02-03 19:20:56');
+/*!40000 ALTER TABLE `answers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `imports`
+--
+
+DROP TABLE IF EXISTS `imports`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `imports` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `datetime` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `imports`
+--
+
+LOCK TABLES `imports` WRITE;
+/*!40000 ALTER TABLE `imports` DISABLE KEYS */;
+/*!40000 ALTER TABLE `imports` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lists`
+--
+
+DROP TABLE IF EXISTS `lists`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lists` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `num_calls` int(11) DEFAULT NULL,
+  `level` int(11) DEFAULT NULL,
+  `view` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lists`
+--
+
+LOCK TABLES `lists` WRITE;
+/*!40000 ALTER TABLE `lists` DISABLE KEYS */;
+INSERT INTO `lists` VALUES (18,NULL,1,'2010-02-03 19:22:22','2010-02-03 19:22:22',25,1,'inline');
+/*!40000 ALTER TABLE `lists` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `questions`
+--
+
+DROP TABLE IF EXISTS `questions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `questions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `survey_id` int(11) DEFAULT NULL,
+  `content` text,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `mode` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `questions`
+--
+
+LOCK TABLES `questions` WRITE;
+/*!40000 ALTER TABLE `questions` DISABLE KEYS */;
+INSERT INTO `questions` VALUES (2,5,'Test question select','2010-01-22 22:20:13','2010-01-28 19:48:20','select'),(3,5,'Test checkbox question','2010-01-25 00:42:05','2010-01-28 19:48:20','checkbox'),(4,5,'Test radio','2010-01-28 19:48:20','2010-01-28 19:48:20','radio'),(5,6,'Do you like pizza?','2010-02-03 19:20:55','2010-02-03 19:20:55','radio'),(6,6,'What toppings?','2010-02-03 19:20:55','2010-02-03 19:20:55','checkbox');
+/*!40000 ALTER TABLE `questions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `responses`
+--
+
+DROP TABLE IF EXISTS `responses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `responses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `answer_id` int(11) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `cycle` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `survey_reply_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `responses`
+--
+
+LOCK TABLES `responses` WRITE;
+/*!40000 ALTER TABLE `responses` DISABLE KEYS */;
+INSERT INTO `responses` VALUES (1,14,'2010-03-08','2010','2010-03-09 01:55:05','2010-03-09 01:55:05',37),(2,14,'2010-03-08','2010','2010-03-09 01:55:17','2010-03-09 01:55:17',38);
+/*!40000 ALTER TABLE `responses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_migrations`
+--
+
+DROP TABLE IF EXISTS `schema_migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_migrations` (
+  `version` varchar(255) NOT NULL,
+  UNIQUE KEY `unique_schema_migrations` (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_migrations`
+--
+
+LOCK TABLES `schema_migrations` WRITE;
+/*!40000 ALTER TABLE `schema_migrations` DISABLE KEYS */;
+INSERT INTO `schema_migrations` VALUES ('20100112015349'),('20100112020240'),('20100112020347'),('20100112020442'),('20100112021315'),('20100112021513'),('20100112021622'),('20100113183350'),('20100113193136'),('20100113194738'),('20100121184131'),('20100122012038'),('20100122012118'),('20100122012153'),('20100122021744'),('20100122023201'),('20100126184914');
+/*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `survey_replies`
+--
+
+DROP TABLE IF EXISTS `survey_replies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `survey_replies` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `voter_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `survey_replies`
+--
+
+LOCK TABLES `survey_replies` WRITE;
+/*!40000 ALTER TABLE `survey_replies` DISABLE KEYS */;
+INSERT INTO `survey_replies` VALUES (31,32,1,'2010-01-29 01:44:27','2010-01-29 01:44:27'),(32,34,1,'2010-02-02 20:39:49','2010-02-02 20:39:49'),(33,35,1,'2010-02-02 20:44:37','2010-02-02 20:44:37'),(34,36,1,'2010-02-02 22:10:50','2010-02-02 22:10:50'),(35,38,1,'2010-02-02 22:45:55','2010-02-02 22:45:55'),(36,40,1,'2010-02-02 22:50:48','2010-02-02 22:50:48'),(37,57,1,'2010-03-09 01:55:05','2010-03-09 01:55:05'),(38,58,1,'2010-03-09 01:55:17','2010-03-09 01:55:17');
+/*!40000 ALTER TABLE `survey_replies` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `surveys`
+--
+
+DROP TABLE IF EXISTS `surveys`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `surveys` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `open_script` text,
+  `close_script` text,
+  `active` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `surveys`
+--
+
+LOCK TABLES `surveys` WRITE;
+/*!40000 ALTER TABLE `surveys` DISABLE KEYS */;
+INSERT INTO `surveys` VALUES (5,'Test survey','Test script','Closing script','N','2010-01-22 22:20:13','2010-02-03 19:21:09'),(6,'Test 2','Hello my name is _____','','Y','2010-02-03 19:20:55','2010-02-03 19:21:09');
+/*!40000 ALTER TABLE `surveys` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `voters`
+--
+
+DROP TABLE IF EXISTS `voters`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `voters` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `van_id` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `party` varchar(255) DEFAULT NULL,
+  `sex` varchar(255) DEFAULT NULL,
+  `voter_type` varchar(255) DEFAULT NULL,
+  `level` int(11) DEFAULT NULL,
+  `list_id` int(11) DEFAULT NULL,
+  `import_id` int(11) DEFAULT NULL,
+  `import_date` datetime DEFAULT NULL,
+  `last_updated` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_voters_on_van_id` (`van_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=219 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `voters`
+--
+
+LOCK TABLES `voters` WRITE;
+/*!40000 ALTER TABLE `voters` DISABLE KEYS */;
+INSERT INTO `voters` VALUES (2,16258,'Joann Angerson','9185 Riding Heights Ave ','7028732855.0',NULL,'Democrat','F','VoterFile',1,13,NULL,'2010-01-14 00:00:00','2010-01-14 17:21:51'),(3,17380,'Leonard Aponas','7071 Wedgewood Way ','7022275159.0',NULL,'Democrat','M','VoterFile',1,13,NULL,'2010-01-14 00:00:00','2010-01-14 17:21:51'),(4,18635,'Rene Ardon','1066 Leesburg St ','7024570639.0',NULL,'Democrat','M','VoterFile',1,13,NULL,'2010-01-14 00:00:00','2010-01-14 17:21:51'),(5,24789,'Salem Ayoob','3079 Garnet Ct ','7022876664.0',NULL,'Democrat','M','VoterFile',1,13,NULL,'2010-01-14 00:00:00','2010-01-14 17:21:51'),(6,27001,'Michael Bailey','7652 Majestic Springs Dr ','7022542281.0',NULL,'Democrat','M','VoterFile',1,13,NULL,'2010-01-14 00:00:00','2010-01-14 17:21:51'),(7,28730,'Donna Balboni','9504 Salem Hills Ct ',NULL,'balbol@yahoo.com','Democrat','F','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(8,35986,'Pasquale Bartucca','5836 Camino Rosa St ','7023961062.0',NULL,'Democrat','M','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(9,49028,'Kathleen Bianco','7626 Boca Raton Dr ','7022210485.0',NULL,'Democrat','F','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(10,49589,'Joseph Bifano','3950 Starfield Ln ','7022554761.0','joeybiff@yahoo.com','Democrat','M','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(11,49859,'James Bilbray','3128 Beach View Ct ','7022408025.0','jbilbray@kkbr.com','Democrat','M','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(12,56764,'Justin Bolor','3027 Loggia Ct ','7024805716.0',NULL,'Non-Partisan','M','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(13,67428,'Anthony Brillhart','1712 Hassett Ave ','7024651276.0','FIWER@HOTMAIL.COM','Democrat','M','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(14,73353,'George Brozic','501 S Maryland Pkwy Apt B3 ','7027718892.0',NULL,'Democrat','M','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(15,83582,'Keith Caceres','3349 Michelangelo Ct ','7026589974.0',NULL,'Democrat','M','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(16,90025,'Rebecca Cardona','8284 Aurora Peak Ave ','7028395402.0','EMPERORSEVERUS@MSN.COM','Democrat','F','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(17,92548,'John Carreon','104 Megan Dr ','7023247637.0',NULL,'Democrat','M','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(18,93345,'Cynthia Carruthers','1862 Bogey Way ','7022608141.0',NULL,'Democrat','F','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(19,96257,'Kathleen Casteel','6362 Rose Tree Ln ','7024764316.0',NULL,'Democrat','F','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(20,103577,'Zsazsa Cherry','1608 Luning Dr ','7026482499.0',NULL,'Democrat','F','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(21,109499,'Keiko Clarke','1721 Silent Sunset Ave ','7023990782.0',NULL,'Democrat','F','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(22,110517,'Howard Clemons','4004 Paul Robarts Ct ','7022426067.0',NULL,'Democrat','M','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(23,111505,'Dolores Cluka','3314 Royal Bay Dr ','7023635749.0',NULL,'Democrat','F','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(24,113842,'Katherine Cole','3500 Casa Grande Ave ','7023848531.0',NULL,'Democrat','F','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(25,121626,'Helen Corda','3398 Nahatan Way ','7027322576.0',NULL,'Democrat','F','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(26,121627,'Michael Corda','3398 Nahatan Way ','7027322576.0',NULL,'Non-Partisan','M','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(27,123973,'Joseph Costanzo','3776 Tranquility Ridge Ct ','7023419788.0',NULL,'Democrat','M','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(28,137571,'Christine Datian','3785 Longs Peak Ct ','7023672226.0',NULL,'Democrat','F','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(29,141034,'Wesley Davis','8220 Antler Ridge Ave ','7022565805.0',NULL,'Democrat','M','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(30,142923,'Hal Debecker','3515 Broadlands Ct ','7027355279.0',NULL,'Democrat','M','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(31,144170,'Chris Deguzman','606 Landview Ct ','7023403651.0',NULL,'Democrat','M','VoterFile',1,16,NULL,'2010-01-14 00:00:00','2010-01-22 19:08:41'),(32,147699,'Robert Dennie','2800 S Eastern Ave Apt 514 ','7027323483','robertldenniesr@msn.com','Democrat','M','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(33,171603,'Betty Ellison','4525 W Twain Ave Spc 63 ','7028735214.0',NULL,'Democrat','F','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(34,194945,'Catherine Foster','5422 Nestled Moon Ct ','7023966903.0',NULL,'Democrat','F','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(35,195199,'Lionel Foster','5422 Nestled Moon Ct ','7023966903.0',NULL,'Democrat','M','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(36,202448,'Clevonne Funches','4249 N Commerce St Unit BLD1 ','7025109140.0',NULL,'Democrat','M','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(37,202452,'Freida Funches','2619 Joseph Canyon Dr ','7026413987.0',NULL,'Democrat','F','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(38,213966,'Cathy Gerye','12120 Vista Linda Ave ','7022561456.0',NULL,'Democrat','F','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(39,215821,'Angeline Gikas','4525 W Twain Ave Spc 65 ','7028734496.0',NULL,'Democrat','F','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(40,226789,'Lynn Goya','413 Utah St ','7022940354.0',NULL,'Democrat','F','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(41,242403,'James Hall','187 Greenbriar Townhouse Way ','7024337253.0',NULL,'Democrat','M','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(42,247966,'Maxine Hardin','608 Riding Crop Ave ','7025802130.0',NULL,'Democrat','F','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(43,250563,'Ernest Harris','7476 Peaceful Brook St ','7022569820.0',NULL,'Democrat','M','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(44,256603,'Lois Haywood','3940 Lasso Cir ','7024513700.0',NULL,'Democrat','F','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(45,259998,'Delphine Henderson','2929 Covatta Ct ','7022549644.0','DEL89117@YAHOO.COM','Democrat','F','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(46,261577,'Robert Henry','1708 Wicklow Way ','7028987410.0',NULL,'Democrat','M','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(47,265082,'Thomas Hess','7010 Paddington Way ','7028769676.0',NULL,'Democrat','M','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(48,266741,'Ava High','3716 Ricebird Way ','7028973100.0',NULL,'Democrat','F','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(49,275131,'James Hooker','7965 Lisa Dawn Ave ','7022577861.0',NULL,'Democrat','M','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(50,294770,'Edward Jensen','928 Keys Dr ','7022936636.0',NULL,'Democrat','M','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(51,299894,'Peggy Johnson','2229 Golden Arrow Dr ','7027329961.0','ejp22@cox.net','Democrat','F','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(52,304354,'Shirley Jones','7705 Kiowa Pointe St ','7022548524.0',NULL,'Democrat','F','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(53,310978,'Bessie Kayfes','3993 Foxgrove Dr ','7028736191.0',NULL,'Democrat','F','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(54,311519,'Marie Heil','9883 Oriole Crest Ct ','7022285825.0',NULL,'Democrat','F','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(55,313729,'Victoria Kelly','67 Montagna Mirage St ','7028234054.0',NULL,'Democrat','F','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(56,318237,'Edgar Kimbrough','9025 W Desert Inn Rd Apt 284 ','7024672679.0',NULL,'Democrat','M','VoterFile',1,17,NULL,'2010-01-14 00:00:00','2010-01-24 14:11:22'),(57,323403,'William Knight','1744 Evening Bluff Pl ','7023997809.0',NULL,'Democrat','M','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(58,327810,'Lisa Ebeltoft','6868 Sky Pointe Dr Unit 2116 ','7022035472.0',NULL,'Democrat','F','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(59,328598,'Melville Kriegh','6432 Indian Peak Ct ','7023758181.0',NULL,'Democrat','M','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(60,330116,'Jan Kuhns','1715 Bluff Hollow Pl ','7022275802.0',NULL,'Non-Partisan','F','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(61,332952,'Helen Lagrandeur','3946 Spring Leaf Dr ','7022520606.0',NULL,'Democrat','F','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(62,333544,'Tina Sigman','2902 Portada Ave ','7022657517.0',NULL,'Democrat','F','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(63,334651,'Annie Lampley','5093 Shadow Mist Ct ','7023603674.0',NULL,'Democrat','F','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(64,335280,'Larry Landrum','2309 Maroney Ave ','7025869709.0',NULL,'Democrat','M','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(65,339537,'Alfred Lauwa','7950 W Flamingo Rd Unit 1159 ','7022278857.0',NULL,'Democrat','M','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(66,345812,'Terry Lemley','4779 Lake Pl ','7022741705.0','whitney@skylink.com','Democrat','F','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(67,351894,'Virginia Linden','6525 Affermato St ','7022553232.0',NULL,'Democrat','F','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(68,352036,'Patrice Lindley','1523 Exley Ave ','7028569514.0',NULL,'Democrat','F','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(69,353680,'Joann Little','4515 S Durango Dr Apt 1010 ','7025027143.0',NULL,'Democrat','F','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(70,363663,'Jill Delaney','4006 Villeroy Ave ','7022390491.0','nothrillsjills@yahoo.com','Democrat','F','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(71,366337,'Lois Mack','1420 Sharon Rd ','7026311914.0','oze@earthlink.net','Democrat','F','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(72,375850,'Sandra Marroso','10979 Carberry Hill St ','7028979003.0',NULL,'Democrat','F','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(73,378766,'Beatrice Martinez','1741 Howard Ave ','7024336180.0',NULL,'Democrat','F','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(74,390729,'Mary McDonald','8025 Panpipe Ct ','7028762710.0','jemcdduke@msn.com','Democrat','F','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(75,398104,'Jimmy Medina','6439 Gentle Falls Ln ','7022365690.0',NULL,'Democrat','M','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(76,418859,'Judith Moreno','4010 Foxgrove Dr ','7022527336.0',NULL,'Democrat','F','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(77,425291,'Harvey Munford','809 Sunny Pl ','7026464265.0',NULL,'Democrat','M','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(78,428522,'Thomas Myers','7721 Beach Falls Ct ','7026049949.0','sract@earthlink.net','Democrat','M','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(79,429238,'Richard Nailer','8929 Glenistar Gate Ave ','7026101118.0',NULL,'Democrat','M','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(80,433409,'Sandra Nelson','10374 Melodia Magico Ave ','7023606523.0',NULL,'Democrat','F','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(81,436273,'Robin Nichols','3395 Cloverdale Ct ',NULL,NULL,'Non-Partisan','F','VoterFile',1,18,NULL,'2010-01-14 00:00:00','2010-02-03 11:22:22'),(82,444157,'Gretchen Oglesby','9428 Aspen Glow Dr ','3109367456.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(83,444277,'Larry Ohalloran','7775 Coley Ave ','7023626647.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(84,455134,'Antoaneta Panteleimonova','2884 Altair St ','7023634438.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(85,455984,'Brenda Parham','1412 Gentle Brook St ','7022717162.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(86,456188,'Christopher Park','4132 Mantle Ave ','7026589205.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(87,456685,'Katherine Parker','5217 Mantua Ct ','7022921138.0','CALISTA_STAR@EXCITE.COM','Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(88,462111,'Beth Peck','6929 Stober Ct ','7023405268.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(89,462735,'Pennie Pehrson','8101 W Flamingo Rd Unit 1004 ','7027826403.0','penlvpen@yahoo.com','Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(90,464698,'Alfonso Perez','6949 Montcliff Ave ','7028712553.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(91,468391,'Henrietta Peterson','6077 College Park Ln ','7024447515.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(92,484304,'Nathan Pulley','3936 Pepper Thorn Ave Unit 101 ','7023740363.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(93,486006,'John Quinlan','8095 Cimarron Meadows Way ','7028764432.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(94,492143,'Andrea Rauth','9248 Spruce Mountain Way ','7022550493.0','DRRSHANK@AOL.COM','Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(95,494689,'Kenneth Reed','145 Vance Ct ','7022600411.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(96,504148,'Henry Ringel','8410 Eldora Ave Unit 2011 ','7022559011.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(97,517897,'Steven Ross','5950 W Rosada Way ','7024056023.0','steve@rossforlasvegas.com','Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(98,532601,'Vicente Saucedo','9320 Red Twig Dr ','7023603560.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(99,550086,'Jacqueline Sherwood','7137 Kindle Ct ','7023721810.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(100,554114,'Donald Silverman','3800 S Decatur Blvd Spc 18 ','7028788166.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(101,554820,'Stephanie Simmons','6520 Diamond Point Ct ','7022785289.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(102,554908,'Marsha Kimble-Simms','1918 Night Shadow Ave ','7026576470.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(103,558548,'Lucille Slater','4812 Magnolia Blossom Ave ','7026337757.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(104,562506,'Julie Smith','9408 Hollycrest Dr ','7022554872.0','julie_lasvegas@yahoo.com','Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(105,569459,'Anita Sowards','4525 W Twain Ave Spc 101 ','7023671057.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(106,587878,'Dixie Swanson','3640 Ash Springs Way ','7027691489.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(107,594495,'Sandra Taylor','8350 W Desert Inn Rd Apt 1120 ','7028779058.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(108,595072,'Edward Teen','3751 Alice Ln ','7022211107.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(109,607855,'Diana Tran','8941 Tom Noon Ave ','7022758352.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(110,609229,'Sharon Triola','3480 Kapalua Bay Dr ','7023957731.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(111,615723,'Patsy Uyeda','3044 Ocean View Dr ','7022286418.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(112,629800,'Marleen Walker','1929 Barrow Glen Ct ','7022488550.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(113,630570,'Deanna Wallace','8212 Wooden Windmill Ct ','7028395444.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(114,640489,'James Wells','3944 Calle Mirador ','7023623034.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(115,644842,'Marques White','6917 Cobre Azul Ave Unit 102 ','7027671619.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(116,646428,'Latasha Whittley-Oquinn','9621 Friesian St ','7025236825.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(117,651041,'Linda Williams','9980 Prairie Dove Ave ','7022541946.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(118,657965,'Arthur Wolf','4429 Live Oak Dr ','7028986564.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(119,662513,'Samuel Wright','413 N Lamb Blvd Apt C ','7023677694.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(120,664039,'Theresa Yancy','7812 Wavering Pine Dr ','7025101177.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(121,665903,'Adele Young','745 Wheat Ridge Ln Unit 202 ','7022420560.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(122,670505,'John Zimmerman','435 Federman Dr ','7023615244.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(123,688231,'Michael Bekoff','3225 Rio Vista Dr Apt 123 ','7022980871.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(124,859447,'Dylan Shaver','6150 Peppermill Dr ','7028387362.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(125,1040192,'Robert Mancini','6155 Sweetbriar Ct ','7022207033.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(126,1477748,'Richard Jost','2840 S Monte Cristo Way ','7023656011.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(127,1779293,'Jean Michel','1003 Meadow Bridge Ave ','7024854188.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(128,1848758,'Norma Vega','3918 Heldron St ','7026856219.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(129,1855550,'Bridget Thornton-Knight','1744 Evening Bluff Pl ','7023997809.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(130,1857721,'Jessica Petrillo','4349 Cottontail Ln ','7029852353.0','hopeless11@aol.com','Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(131,1865595,'Daniel Webster','1805 Wincanton Dr ','7029278492.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(132,1874232,'Adam Dick','11225 Penrose Falls St ','7022415165.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(133,1881950,'Jonathan Shecter','4525 Dean Martin Dr Unit 2811 ','7022926999.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(134,1885339,'Matthew Ross','7644 Vivid Vail St ','7028855292.0','TINYFLIRT@AOL.COM','Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(135,1899859,'Michael Payne','1804 Howard Ave ','7022368275.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(136,1919223,'Marilyn Vengrow','6429 Giant Oak St ','7023996725.0','bnie_v@juno.com','Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(137,1919224,'Bernard Vengrow','6429 Giant Oak St ','7023996725.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(138,1957309,'Joel Robertson','4770 Topaz St Unit 24 ','7023101961.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(139,2029451,'Eric Blumensaadt','110 Richland Hills Ave ','7025669429.0','7speeder@cox.net','Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(140,2058282,'Thadeous Wilson','6556 Wilma Ave ','7026465093.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(141,2068462,'Kirk Walker','797 E Harmon Ave Apt 27 ','7025423822.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(142,2085455,'Sally Sprong','9070 Spring Mountain Rd Apt 115 ','7026970754.0',NULL,'Non-Partisan','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(143,2101593,'Lizbeth Jimenez','5338 Spencer St ','7026503928.0','Lizbeth.jimenez@ymail.com','Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(144,2158551,'Dustin Carlson','1440 Canyon Ledge Ct ','7028848231.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(145,2165662,'Mark Jackowski','613 Bernini St ','7026100923.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(146,2166640,'Patricia Huber','6420 E Tropicana Ave Unit 25 ','7024542950.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(147,2175289,'Marylou Lauwa','7950 W Flamingo Rd Unit 1159 ','7022278857.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(148,2175922,'Kimberly Orr','271 Sunshine Springs Ct ','7024341975.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(149,2179363,'Mitchell Lubitsch','2253 Laurel Heights Ln ','7022699666.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(150,2179665,'Carlos Martinez','9021 W Viking Rd ',NULL,NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(151,2180205,'Devin Moore','8099 Retriever Ave ','7028126044.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(152,2182071,'J Stewart Skelly','7300 Buttons Ridge Dr ','7026585651.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(153,2201152,'Mallory Ross','7644 Vivid Vail St ','7025232753.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(154,2204853,'Sharon Wieczorek','9165 Decorative Ct ','7022932548.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(155,2214466,'Faye Castillo','2422 Vista Colina St ','7024505311.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(156,2235055,'Luis Lopez','709 Lineshack Ln ','7022772449.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(157,2239700,'Craig Lionel','9867 Ashton Pines Ct ','7027343004.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(158,2246728,'Jose Domingo','3274 Velvet Rose St ','7022433966.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(159,2248064,'Jacqueline Hutchinson','7016 Pinebrook Ct ','7023684669.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(160,2254717,'P Thomas','9184 Raccoon Creek Ln ','7028390639.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(161,2255022,'Josephine Amistoso','7950 W Flamingo Rd Unit 2086 ','7022279441.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(162,2261816,'Jordan Jackson','1724 Duarte Dr ','7024360960.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(163,2269335,'Ryan Foytik','5356 Riverboat Ct ','7023963040.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(164,2269775,'Benjamin Stoner','453 S Chesapeake Way ','7024935463.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(165,2281416,'Robert Clines','3862 Honey Flower Ct ','7022282651.0',NULL,'Non-Partisan','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(166,2282748,'Michael Frost','7090 Mountain Moss Dr ','7028733433.0',NULL,'Non-Partisan','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(167,2290854,'Johnnie Williams','8007 Rotella Dr ','7022486977.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(168,2291281,'Oscar Bradford','3148 Waterside Cir ','7022023044.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(169,2294759,'Kim Price','6361 Obannon Dr ','7028371941.0',NULL,'Non-Partisan','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(170,2296086,'Mike Rosati','4846 Sangay Way ','7023279137.0',NULL,'Non-Partisan','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(171,2297412,'Cynthia Reigh','8112 Deep Stone Ave ','7024137330.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(172,2300959,'Roland Gallant','1701 E Katie Ave Apt 100 ',NULL,NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(173,2302190,'Alphonso Thompson','2101 W Warm Springs Rd Apt 3322 ','7026228443.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(174,2302299,'Diane Kaiser','7881 Broadwing Dr ','7026334137.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(175,2302376,'Crystal Viola','6380 Tara Ave ','7027388486.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(176,2317548,'Ryan Armitage','7925 Violet Sky St ','7026859188.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(177,2324381,'Christopher Guertin','2205 Santa Rosa Dr ','7024964144.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(178,2325776,'Jacqueline Bermudez','1728 Howard Ave ','7023823766.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(179,2332919,'Norma Davis','1828 Hassett Ave ','7024384095.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(180,2334127,'Michael Bunis','3173 Lido Isle Ct ','7022026943.0',NULL,'Non-Partisan','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(181,2353257,'Kanjalia Stidhum','5826 Tipperary St ','7026423330.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(182,2353405,'Hripsime Madaryan','3124 Stern Dr ','7022159408.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(183,2356129,'Thomas Lovelady','3165 S Tenaya Way ','7024934240.0',NULL,'Non-Partisan','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(184,2357867,'Lewis Copes','9409 Angelfish Dr ','7023603995.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(185,2365671,'Adrienne Eberle','7429 Bush Garden Ave ','7026309184.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(186,2370762,'Bonaidis Zambrano','3012 Jacaranda Dr ','7023397073.0',NULL,'Democrat','U','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(187,2370952,'Camille O\'Mara','752 Panhandle Dr ','7028601531.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(188,2372943,'Dana Haskell','6248 Garwood Ave ','7026883268.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(189,2374645,'Kristina Hess','8321 W Sahara Ave Apt 2010 ','7028384377.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(190,2380765,'Shani Curry','3837 Spruceview Ct ','7022208009.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(191,2385671,'Baldomero Corona','4577 Morning Jewel Ave ','7024590982.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(192,2391094,'Kem Deleonard','1925 La Calera Ave ','7024309007.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(193,2392810,'Tyler Nickerson','4320 Sunnyview Ct ','7023645963.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(194,2393235,'Joe Cerame','9153 Imperial Castle Ct ','7028459419.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(195,2395163,'Claire Flowers','308 Big Cliff Ave ','7026491684.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(196,2398016,'Mary Jackson','7432 Redbreast Ct ','7025866870.0',NULL,'Republican','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(197,2405802,'Melissa Meevasin','5381 Cabrito Dr ','7023767575.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(198,2408130,'Morgan Kolber','121 Null Ln ','7184048553.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(199,2429843,'Judith Delorrio','2151 Citrus Hills Ave Apt 1096 ','7024760769.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(200,2430456,'Luis Gomez','1506 Exley Ave ','7024335701.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(201,2446807,'Laura Zupnik','8765 Carlitas Joy Ct ','7027680669.0',NULL,'Non-Partisan','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(202,2457562,'Jennifer Woeller','3001 Lake East Dr Apt 1083 ','7026855352.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(203,3788622,'Shelby Williams','2627 S Torrey Pines Dr ','7024598229.0',NULL,'Non-Partisan','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(204,3820248,'Donald Robinson','2301 Redwood St Apt 3905 ','7022859495.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(205,4048826,'Ahmad Kouhpaenejad','1626 Hennepin Dr ','7024653465.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(206,4440257,'Michael Harris','2120 Hawaiian Breeze Ave ','7024456489.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(207,4498030,'Geovany Sorto','8000 Spring Mountain Rd Apt 2078 ','7026221440.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(208,4516625,'Julie Shinn','3204 Mariner Bay St ','7022204268.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(209,4521036,'Maurice Clarke','1721 Silent Sunset Ave ','7023990782.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(210,4529724,'Stephen Herndon','8321 W Sahara Ave Apt 1053 ','7025807426.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(211,4530365,'Dixie Bradford','3148 Waterside Cir ','7022023044.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(212,4538689,'Jean Wagoner','715 Beesley Dr ','7026432289.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(213,4554286,'Melba Sanchez','8216 Azure Shores Ct ','7022430935.0',NULL,'Non-Partisan','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(214,4558868,'Norris Lam','4749 Spindleridge Cir ','7023744387.0',NULL,'Non-Partisan','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(215,4558986,'John Myers','3212 Shoreheight St ','7022407507.0',NULL,'Democrat','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(216,4607295,'Ashley Wright','3701 Tranquil Canyon Ct ','7022379746.0',NULL,'Democrat','F','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(217,4650487,'John Webb','4789 Zanzibar Ln ','7022486989.0',NULL,'Non-Partisan','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL),(218,4650599,'Jon Carelis','6275 Eldora Ave ','7023683989.0',NULL,'Non-Partisan','M','VoterFile',1,NULL,NULL,'2010-01-14 00:00:00',NULL);
+/*!40000 ALTER TABLE `voters` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2010-03-09 17:11:08

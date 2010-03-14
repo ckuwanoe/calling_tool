@@ -1,0 +1,28 @@
+<% title "List" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @list.name %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%=h @list.user_id %>
+</p>
+<p>
+  <strong>Num Calls:</strong>
+  <%=h @list.num_calls %>
+</p>
+<p>
+  <strong>Level:</strong>
+  <%=h @list.level %>
+</p>
+<p>
+  <strong>View:</strong>
+  <%=h @list.view %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_list_path(@list) %> |
+  <%= link_to "Destroy", @list, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", lists_path %>
+</p>

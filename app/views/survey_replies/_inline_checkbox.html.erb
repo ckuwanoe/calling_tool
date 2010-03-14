@@ -1,0 +1,16 @@
+<% cb_tag = 'survey_reply[responses_attributes][' + index.to_s + '][answer_id]' %>
+<% check = false %>
+<% unless @responses.blank? %>
+  <% for response in @responses do %>
+    <% if response.answer_id == answer.id %>
+      <% check = true %>
+    <% end %>
+  <% end %>
+<% end %>
+<% if check == true %>
+  <%= check_box_tag cb_tag, answers.id, true %>
+<% else %>
+  <%= check_box_tag cb_tag, answers.id, false %>
+<% end %>
+<%= f.label :answer_id, answers.content %><br/>
+<% check = false %>

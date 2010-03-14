@@ -1,0 +1,83 @@
+<table width="100%">
+  <tr>
+    <td>
+      <table>
+        <tr>
+          <td width="50%">
+            <table class="script">
+            	<tr>
+            		<td width="100%">
+            		  <% if params[:action] == 'new' %>
+            		    <%= render :partial => 'voter' %>
+            		  <% elsif params[:action] == 'edit' %>
+            			  <%= render :partial => 'edit_voter' %>
+            			<% end %>
+            		</td>
+            	</tr>
+            </table>
+          </td>
+          <td width="30%">
+            <table class="script">
+              <tr>
+                <td>
+                  <%= render :partial => 'inline_previous_replies', :locals => {:previous_survey_replies => @previous_survey_replies} %>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table width="90%">
+      	<tr>
+      		<td width="50%">
+      			<p><%= h @survey.open_script %></p>
+      			<p><%= h @survey.close_script %></p>
+      		</td>
+      		<td width="30%">
+      			<table class="script">
+      				<tr>
+      					<td>
+      						<% form_for :survey_reply, @survey_reply, :url => {:action => (params[:action] == 'edit' ? 'update' : 'create')} do |f| %>	
+      							<input type="hidden" name="view" value=<%= h(params[:view]) %>>
+      							<input type="hidden" name="list" value=<%= h(params[:list]) %>>	
+      							<% if params[:action] == 'edit' %>
+      							  <input type="hidden" name="id" value=<%= h(params[:id]) %>>
+      							<% end %>						
+      							<%= f.error_messages %>	
+      							<% if params[:action] == 'edit' %>
+      							  <%= f.hidden_field(:voter_id, :value => @voters.id) %>
+      							<% elsif params[:action] == 'new' %>
+      							  <%= f.hidden_field(:voter_id, :value => @voters[0].id) %>
+      							<% end %>
+      							<%= f.hidden_field(:user_id, :value => '1') %>	
+      							<% index = 0 %>
+      							<% f.fields_for :responses do |responses_fields| %>	
+        							<%= responses_fields.hidden_field(:cycle, :value => '2010') %>
+        							<%= responses_fields.hidden_field(:date, :value => Time.now.strftime("%Y-%m-%d")) %>
+        							<%= render :partial => 'inline_question', :locals => {:question => @questions[index], :f => responses_fields, :index => index } %>
+        							<% index += 1 %>
+      							<% end %>
+      					</td>			
+      				</tr>
+      			</table>	
+      		</td>
+      		<td>
+
+      		</td>
+      	</tr>
+      	<tr>
+      		<td colspan="2" align="left">
+      			<%= submit_tag 'Save' %>
+      			&nbsp;&nbsp;  
+      				<%= link_to "Next Call", :action => 'new', :view => params[:view], :list => params[:list] %>
+      		<% end %>
+      		</td>
+      	</tr>
+      </table>
+    </td>
+  </tr>
+</table>	

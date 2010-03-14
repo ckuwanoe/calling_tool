@@ -1,0 +1,81 @@
+--- !ruby/object:Gem::Specification 
+name: rvan
+version: !ruby/object:Gem::Version 
+  version: "0.1"
+platform: ruby
+authors: 
+- Conor Hunt
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2009-12-03 00:00:00 -08:00
+default_executable: 
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: patron
+  type: :runtime
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: 0.4.3
+    version: 
+- !ruby/object:Gem::Dependency 
+  name: xml-simple
+  type: :runtime
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: 1.0.12
+    version: 
+description: Ruby wrapper for the Voter Activation Network (VAN) SOAP APIs.
+email: conor@eastmedia.com
+executables: []
+
+extensions: []
+
+extra_rdoc_files: []
+
+files: 
+- README
+- LICENSE
+- Changelog
+- lib/rvan/event_service.rb
+- lib/rvan/person_service.rb
+- lib/rvan/savedlist_service.rb
+- lib/rvan/service.rb
+- lib/rvan.rb
+has_rdoc: true
+homepage: http://github.com/conorh/rvan/
+licenses: []
+
+post_install_message: 
+rdoc_options: []
+
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.5
+signing_key: 
+specification_version: 3
+summary: Ruby wrapper for the Voter Activation Network (VAN) SOAP APIs.
+test_files: []
+

@@ -1,0 +1,12 @@
+<% form_for :list, @list, :url => { :action => "upload_file"}, :html => { :multipart => true } do |f| %>
+<p>Type of list</p>
+<%= f.select(:voter_type, %w[VoterFile MyCampaign]) %>
+
+<p>Level</p>
+<%= f.select(:level, %w[1 2 3 4])%>
+
+<p>File</p>
+<%= f.file_field(:upload)%>
+<br/><br/>
+<%= submit_tag 'Import' %>
+<% end %>

@@ -1,0 +1,17 @@
+<% form_for @list do |f| %>
+  <%= f.error_messages %>
+	<p>
+		<%= f.label :level, "What kind of calls would you like to make today?" %><br/>
+		<%= f.select(:level, {"Why do you hate me?" => 1, "I don't know either way." => 2, "I totally know who Rory is." => 3, "I love Rory more than I love twilight!!!" => 4}) %>		
+	</p>
+	<p>
+		<%= f.label :num_calls, "How many calls would you like to make today?" %><br/>
+		<%= f.select(:num_calls, %w[5 10 15 20 25 30 35 40 45 50]) %>
+	</p>
+	<p>
+		<%= f.label :view, "Choose a view:" %><br/>
+		<%= f.select(:view, {"Inline Script" => "inline", "Printable Script" => "printable"}) %>
+	</p>
+<br/><br/>
+<%= submit_tag 'Submit' %>
+<% end %>

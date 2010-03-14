@@ -1,0 +1,10 @@
+Previous 5 entries
+<ul>
+  <% for previous_survey_reply in @previous_survey_replies do %>
+    <li>
+      <%= link_to previous_survey_reply.name, :action => 'edit', :id => previous_survey_reply.id, :view => params[:view] %>
+    </li>
+  <% end %>
+</ul>
+<br/>
+<%= link_to "Full list", :action => 'manage' %>

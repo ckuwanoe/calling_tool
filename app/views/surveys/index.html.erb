@@ -1,0 +1,22 @@
+<% title "Surveys" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for survey in @surveys %>
+    <tr>
+      <td><%=h survey.name %></td>
+      <td><%= link_to "Show", survey %></td>
+      <td><%= link_to "Edit", edit_survey_path(survey) %></td>
+	  <% if survey.active == "Y" %>
+	  <td><b>Active</b></td>
+	  <% else %>
+	  <td><%= link_to "Set Active", active_survey_path(survey) %></td>
+	  <% end %>
+      <td><%= link_to "Destroy", survey, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Survey", new_survey_path %> | <%= link_to "Admin", :controller => "admin", :action => "index" %></p>

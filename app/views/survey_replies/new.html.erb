@@ -1,0 +1,5 @@
+<% if params[:view] == "inline" %>
+	<%= render :partial => 'inline', :locals => {:action => 'new'} %>
+<% else %>
+	<%= render :partial => 'printable', :locals => {:action => 'new'} %>
+<% end %>

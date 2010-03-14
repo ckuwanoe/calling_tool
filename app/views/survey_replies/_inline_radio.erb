@@ -1,0 +1,5 @@
+<% for answer in @answers %>
+  <%= f.radio_button(:answer_id, answer.id) %>
+  <%= f.label :answer_id, answer.content %>  
+  <br/>
+<% end %>

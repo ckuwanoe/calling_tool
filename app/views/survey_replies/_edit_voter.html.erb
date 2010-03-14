@@ -1,0 +1,3 @@
+<p><b><%= h @voters.name %></b>
+<%= h @voters.sex + ' ' + @voters.party %><br/>
+<b>(<%= h(@voters.phone[0,3])%>)-<%= h(@voters.phone[3,3] + '-' + @voters.phone[6,4]) %></b></p>
