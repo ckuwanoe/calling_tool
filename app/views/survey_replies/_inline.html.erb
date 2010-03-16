@@ -58,7 +58,9 @@
       							<% f.fields_for :responses do |responses_fields| %>	
         							<%= responses_fields.hidden_field(:cycle, :value => '2010') %>
         							<%= responses_fields.hidden_field(:date, :value => Time.now.strftime("%Y-%m-%d")) %>
-        							<%= render :partial => 'inline_question', :locals => {:question => @questions[index], :f => responses_fields, :index => index } %>
+        							<% if params[:action] == 'new' %>
+        							  <%= render :partial => 'inline_question', :locals => {:question => @questions[index], :f => responses_fields, :index => index } %>
+        							<% end %>
         							<% index += 1 %>
       							<% end %>
       					</td>			

@@ -36228,3 +36228,123 @@ The error occurred while evaluating nil.[]) on line #61 of app/views/survey_repl
 Rendered rescues/_trace (87.3ms)
 Rendered rescues/_request_and_response (1.0ms)
 Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SurveyRepliesController#new (for 127.0.0.1 at 2010-03-14 16:47:02) [GET]
+  Parameters: {"list"=>"18", "view"=>"inline"}
+  [4;36;1mVoter Load (0.8ms)[0m   [0;1mSELECT * FROM voters WHERE list_id = '18' AND voters.id NOT IN 
+ (SELECT voter_id FROM survey_replies WHERE user_id = 1) LIMIT 1[0m
+  [4;35;1mSurveyReply Load (0.5ms)[0m   [0mSELECT v.name, v.sex, v.party, v.phone, s.* FROM survey_replies s LEFT JOIN voters v 
+ on s.voter_id = v.id WHERE s.user_id = 1 ORDER BY s.updated_at DESC LIMIT 5[0m
+  [4;36;1mSurvey Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `surveys`[0m
+  [4;35;1mSurvey Load (0.8ms)[0m   [0mSELECT * FROM `surveys` WHERE (`surveys`.`active` = 'Y') LIMIT 1[0m
+  [4;36;1mQuestion Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `questions`[0m
+  [4;35;1mQuestion Load (0.7ms)[0m   [0mSELECT * FROM `questions` WHERE (`questions`.`survey_id` = 6) [0m
+  [4;36;1mSurveyReply Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `survey_replies`[0m
+  [4;35;1mResponse Columns (2.9ms)[0m   [0mSHOW FIELDS FROM `responses`[0m
+  [4;36;1mAnswer Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `answers`[0m
+  [4;35;1mAnswer Load (1.5ms)[0m   [0mSELECT * FROM `answers` WHERE (`answers`.`question_id` = 6) [0m
+Rendering template within layouts/application
+Rendering survey_replies/new
+  [4;36;1mVoter Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `voters`[0m
+Rendered survey_replies/_voter (6.2ms)
+Rendered survey_replies/_inline_previous_replies (2.7ms)
+  [4;35;1mAnswer Load (1.5ms)[0m   [0mSELECT * FROM `answers` WHERE (`answers`.`question_id` = 5) [0m
+Rendered survey_replies/_inline_radio (7.5ms)
+Rendered survey_replies/_inline_question (16.8ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `answers` WHERE (`answers`.`question_id` = 6) [0m
+Rendered survey_replies/_inline_checkbox (1.3ms)
+Rendered survey_replies/_inline_checkbox (1.1ms)
+Rendered survey_replies/_inline_checkbox (1.6ms)
+Rendered survey_replies/_inline_question (5.9ms)
+Rendered survey_replies/_inline_question (0.1ms)
+Rendered survey_replies/_inline_question (0.1ms)
+Rendered survey_replies/_inline (54.1ms)
+Completed in 241ms (View: 55, DB: 17) | 200 OK [http://localhost/survey_replies/new?list=18&view=inline]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SurveyRepliesController#edit (for 127.0.0.1 at 2010-03-14 16:47:05) [GET]
+  Parameters: {"id"=>"40", "view"=>"inline"}
+  [4;35;1mSurveyReply Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `survey_replies`[0m
+  [4;36;1mSurveyReply Load (14.1ms)[0m   [0;1mSELECT * FROM `survey_replies` WHERE (`survey_replies`.`id` = 40) [0m
+  [4;35;1mVoter Columns (3.4ms)[0m   [0mSHOW FIELDS FROM `voters`[0m
+  [4;36;1mVoter Load (0.5ms)[0m   [0;1mSELECT * FROM `voters` WHERE (`voters`.`id` = 58) [0m
+  [4;35;1mSurveyReply Load (6.3ms)[0m   [0mSELECT v.name, v.sex, v.party, v.phone, s.* FROM survey_replies s LEFT JOIN voters v 
+ on s.voter_id = v.id WHERE s.user_id = 1 ORDER BY s.updated_at DESC LIMIT 5[0m
+  [4;36;1mSurvey Columns (27.1ms)[0m   [0;1mSHOW FIELDS FROM `surveys`[0m
+  [4;35;1mSurvey Load (0.5ms)[0m   [0mSELECT * FROM `surveys` WHERE (`surveys`.`active` = 'Y') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering survey_replies/new
+Rendered survey_replies/_edit_voter (4.6ms)
+Rendered survey_replies/_inline_previous_replies (1.5ms)
+  [4;36;1mResponse Load (6.3ms)[0m   [0;1mSELECT * FROM `responses` WHERE (`responses`.survey_reply_id = 40) [0m
+  [4;35;1mResponse Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `responses`[0m
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of ActiveRecord::Base.
+The error occurred while evaluating nil.[]) on line #61 of app/views/survey_replies/_inline.html.erb:
+58:       							<% f.fields_for :responses do |responses_fields| %>	
+59:         							<%= responses_fields.hidden_field(:cycle, :value => '2010') %>
+60:         							<%= responses_fields.hidden_field(:date, :value => Time.now.strftime("%Y-%m-%d")) %>
+61:         							<%= render :partial => 'inline_question', :locals => {:question => @questions[index], :f => responses_fields, :index => index } %>
+62:         							<% index += 1 %>
+63:       							<% end %>
+64:       					</td>			
+
+    app/views/survey_replies/_inline.html.erb:61
+    app/views/survey_replies/_inline.html.erb:58
+    app/views/survey_replies/_inline.html.erb:44
+    app/views/survey_replies/new.html.erb:2
+    app/controllers/survey_replies_controller.rb:54:in `edit'
+
+Rendered rescues/_trace (119.1ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SurveyRepliesController#edit (for 127.0.0.1 at 2010-03-14 16:48:11) [GET]
+  Parameters: {"id"=>"40", "view"=>"inline"}
+  [4;36;1mSurveyReply Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `survey_replies`[0m
+  [4;35;1mSurveyReply Load (0.5ms)[0m   [0mSELECT * FROM `survey_replies` WHERE (`survey_replies`.`id` = 40) [0m
+  [4;36;1mVoter Columns (2.8ms)[0m   [0;1mSHOW FIELDS FROM `voters`[0m
+  [4;35;1mVoter Load (0.9ms)[0m   [0mSELECT * FROM `voters` WHERE (`voters`.`id` = 58) [0m
+  [4;36;1mSurveyReply Load (0.3ms)[0m   [0;1mSELECT v.name, v.sex, v.party, v.phone, s.* FROM survey_replies s LEFT JOIN voters v 
+ on s.voter_id = v.id WHERE s.user_id = 1 ORDER BY s.updated_at DESC LIMIT 5[0m
+  [4;35;1mSurvey Columns (2.7ms)[0m   [0mSHOW FIELDS FROM `surveys`[0m
+  [4;36;1mSurvey Load (0.4ms)[0m   [0;1mSELECT * FROM `surveys` WHERE (`surveys`.`active` = 'Y') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering survey_replies/edit
+Rendered survey_replies/_edit_voter (2.8ms)
+Rendered survey_replies/_inline_previous_replies (4.3ms)
+  [4;35;1mResponse Load (2.0ms)[0m   [0mSELECT * FROM `responses` WHERE (`responses`.survey_reply_id = 40) [0m
+  [4;36;1mResponse Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `responses`[0m
+Rendered survey_replies/_inline (155.7ms)
+Completed in 200ms (View: 163, DB: 13) | 200 OK [http://localhost/survey_replies/40/edit?view=inline]
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SurveyRepliesController#edit (for 127.0.0.1 at 2010-03-15 19:04:17) [GET]
+  Parameters: {"id"=>"40", "view"=>"inline"}
+  [4;36;1mSurveyReply Columns (9.1ms)[0m   [0;1mSHOW FIELDS FROM `survey_replies`[0m
+  [4;35;1mSurveyReply Load (9.6ms)[0m   [0mSELECT * FROM `survey_replies` WHERE (`survey_replies`.`id` = 40) [0m
+  [4;36;1mVoter Columns (2.8ms)[0m   [0;1mSHOW FIELDS FROM `voters`[0m
+  [4;35;1mVoter Load (7.3ms)[0m   [0mSELECT * FROM `voters` WHERE (`voters`.`id` = 58) [0m
+  [4;36;1mSurveyReply Load (4.0ms)[0m   [0;1mSELECT v.name, v.sex, v.party, v.phone, s.* FROM survey_replies s LEFT JOIN voters v 
+ on s.voter_id = v.id WHERE s.user_id = 1 ORDER BY s.updated_at DESC LIMIT 5[0m
+  [4;35;1mSurvey Columns (3.2ms)[0m   [0mSHOW FIELDS FROM `surveys`[0m
+  [4;36;1mSurvey Load (4.4ms)[0m   [0;1mSELECT * FROM `surveys` WHERE (`surveys`.`active` = 'Y') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering survey_replies/edit
+Rendered survey_replies/_edit_voter (67.8ms)
+Rendered survey_replies/_inline_previous_replies (3.4ms)
+  [4;35;1mResponse Load (5.6ms)[0m   [0mSELECT * FROM `responses` WHERE (`responses`.survey_reply_id = 40) [0m
+  [4;36;1mResponse Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `responses`[0m
+Rendered survey_replies/_inline (106.7ms)
+Completed in 230ms (View: 129, DB: 49) | 200 OK [http://localhost/survey_replies/40/edit?view=inline]
