@@ -51,8 +51,8 @@ class SurveyRepliesController < ApplicationController
     ["SELECT v.name, v.sex, v.party, v.phone, s.* FROM survey_replies s LEFT JOIN voters v 
       on s.voter_id = v.id WHERE s.user_id = ? ORDER BY s.updated_at DESC LIMIT 5", USERID])
     @survey = Survey.find_by_active('Y')
-    #render :action => 'new', :params => {:view => params[:view]}
-    #@questions = Question.find_all_by_survey_id(@survey.id)
+    @questions = Question.find_all_by_survey_id(@survey.id)
+    render :action => 'new', :params => {:view => params[:view]}
     #for question in @questions do
     #  if question.mode == 'checkbox'
     #    @answers = Answer.find_all_by_question_id(question.id)
