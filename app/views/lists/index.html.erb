@@ -2,7 +2,7 @@
 <p>What would you like to do today?</p>
 <p>
 <% if check_list %>
-	<%= link_to "Continue my calls", :controller => 'survey_replies', :action => 'new' %>
+	<%= link_to "Continue my calls", :controller => 'survey_replies', :action => 'index' %>
 <% else %>
 	<%= link_to "Make some calls", new_list_path %>
 <% end %>

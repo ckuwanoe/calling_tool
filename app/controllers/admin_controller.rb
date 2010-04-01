@@ -54,4 +54,12 @@ class AdminController < ApplicationController
   def add_survey
     @survey = Survey.new
   end
+  
+  def view_queue
+    
+  end
+  
+  def approve_responses
+    
+  end
 end

@@ -1,17 +1,17 @@
 <% unless question.nil? %>
   <% if question.mode == 'select'%>
     <% @answers = find_answers(question.id) %>
-    <p><%= h(question.content) %></p>
+    <legend><%= h(question.content) %></legend>
   	<%= render :partial => 'inline_select', :locals => {:answers => @answers, :f => f } %>
   <% elsif question.mode == 'checkbox' %>
     <% @answers = find_answers(question.id) %>
-    <p><%= h(question.content) %></p>
+    <legend><%= h(question.content) %></legend>
     <% for answer in @answers %>
   	  <%= render :partial => 'inline_checkbox', :locals => {:answers => answer, :f => f, :index => index} %>
   	<% end %>
   <% elsif question.mode == 'radio' %>
   	<% @answers = find_answers(question.id) %>
-    <p><%= h(question.content) %></p>
+    <legend><%= h(question.content) %></legend>
   	<%= render :partial => 'inline_radio', :locals => {:answers => @answers, :f => f } %>
   <% end %>
 <% end %>

@@ -45,6 +45,7 @@ class SurveyRepliesController < ApplicationController
   end
   
   def edit
+    @list = List.find_by_user_id(USERID)
     @survey_reply = SurveyReply.find(params[:id])
     @voters = Voter.find(@survey_reply.voter_id)
     @previous_survey_replies = SurveyReply.find_by_sql(
@@ -71,6 +72,7 @@ class SurveyRepliesController < ApplicationController
       flash[:notice] = "Successfully updated survey replies."
       redirect_to :action => 'edit', :params => {:id => params[:id], :view => params[:view]}
     else
+      flash[:error] = "Could not edit response. Please check your values and try again."
       render :action => 'edit'
     end
   end
