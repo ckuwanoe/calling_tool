@@ -63,6 +63,6 @@ class AdminController < ApplicationController
   end
   
   def approve_responses
-    
+     
   end
 end
