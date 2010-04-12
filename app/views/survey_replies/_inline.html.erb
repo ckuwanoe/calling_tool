@@ -16,7 +16,7 @@
 	<input type="hidden" name="view" value=<%= h(params[:view]) %>>
 	<input type="hidden" name="list" value=<%= h(params[:list]) %>>	
 	<% if params[:action] == 'edit' %>
-	  <input type="hidden" name="id" value=<%= h(params[:id]) %>>
+	  <%= f.hidden_field(:id, :value => params[:id]) %>
 	<% end %>						
 	<%= f.error_messages %>	
 	<% if params[:action] == 'edit' %>
@@ -24,7 +24,8 @@
 	<% elsif params[:action] == 'new' %>
 	  <%= f.hidden_field(:voter_id, :value => @voters[0].id) %>
 	<% end %>
-	<%= f.hidden_field(:user_id, :value => '1') %>	
+	<%= f.hidden_field(:user_id, :value => 1) %>	
+	<%= f.hidden_field(:approval, :value => 'W') %>
 	<% index = 0 %>
 	<% f.fields_for :responses do |responses_fields| %>	
 		<%= responses_fields.hidden_field(:cycle, :value => '2010') %>

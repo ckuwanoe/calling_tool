@@ -67,10 +67,10 @@ class SurveyRepliesController < ApplicationController
   end
   
   def update
-    @survey_replies = SurveyReply.find(params[:id])
-    if @survey_replies.update_attributes(params[:survey_replies])
+    @survey_replies = SurveyReply.find(params[:survey_reply][:id])
+    if @survey_replies.update_attributes(params[:survey_reply])
       flash[:notice] = "Successfully updated survey replies."
-      redirect_to :action => 'edit', :params => {:id => params[:id], :view => params[:view]}
+      redirect_to :action => 'edit', :params => {:id => params[:survey_reply][:id], :view => params[:view]}
     else
       flash[:error] = "Could not edit response. Please check your values and try again."
       render :action => 'edit'

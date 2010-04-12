@@ -56,7 +56,10 @@ class AdminController < ApplicationController
   end
   
   def view_queue
-    
+    sql = "SELECT v.name as voter_name, q.content as question_text, a.content as answer_text FROM survey_replies as s LEFT JOIN voters v on 
+    s.voter_id = v.id LEFT JOIN responses r on s.id = r.survey_reply_id LEFT JOIN 
+    answers a on a.id = r.answer_id LEFT JOIN questions q on q.id = a.question_id WHERE s.approval = 'W' ORDER BY s.created_at ASC"
+    @survey_replies = SurveyReply.find_by_sql(sql)
   end
   
   def approve_responses

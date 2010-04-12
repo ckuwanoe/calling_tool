@@ -5,9 +5,7 @@
     <title><%= h(yield(:title) || "Make Calls for Rory") %></title>
     <%= stylesheet_link_tag 'calltool' %>
     <%= javascript_include_tag :defaults, :cache => true %>
-    <link rel="stylesheet" type="text/css" href="jquery-css/overcast/jquery-ui-1.8.custom.css"/>
-    <script type="text/javascript" src="css-js/jquery-ui-1.8.custom.min.js"></script>
-    <script type="text/javascript" src="css-js/jquery-1.4.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/jquery-css/overcast/jquery-ui-1.8.custom.css"/>
      <script type="text/javascript">
        /*  $(document).ready(function(){
 
@@ -23,8 +21,11 @@
 
 
      }); */
-
-       </script>    
+     function jqCheckAll2( id, name )
+     {
+        $("INPUT[@name=" + name + "][type='checkbox']").attr('checked', $('#' + id).is(':checked'));
+     }
+    </script>    
     <%= yield(:head) %>
   </head>
   <body>
@@ -44,14 +45,9 @@
                   <div id="profile"><h3>Avatar Lady</h3><p>Las Vegas, NV</p>
                 <h3>Interests:</h3><p>Being Awesome, Voting, Education, Health Care</p><p><a href="#edit">Edit Information</a></p></div><!--end profile-->
               </div><!--end userinfo-->
-              <div id="sidelinks">
-              	<ul>
-                  	<li>Link 1</li>
-                      <li>Link 2</li>
-                      <li>Link 3</li>
-                      <li>Link 4</li>
-                  </ul>
-              </div><!--end sidelinks-->
+              <% if params[:controller] == 'admin' or params[:controller] == 'surveys' %>
+                <%= render :partial => 'admin/links' %>
+              <% end %>
               <% if params[:controller] == 'survey_replies' %>
                 <%= render :partial => 'survey_replies/inline_previous_replies' %>
               <% end %>

@@ -1,16 +1,14 @@
 <% unless question.nil? %>
+  <% @answers = find_answers(question.id) %>
   <% if question.mode == 'select'%>
-    <% @answers = find_answers(question.id) %>
     <legend><%= h(question.content) %></legend>
   	<%= render :partial => 'inline_select', :locals => {:answers => @answers, :f => f } %>
   <% elsif question.mode == 'checkbox' %>
-    <% @answers = find_answers(question.id) %>
     <legend><%= h(question.content) %></legend>
-    <% for answer in @answers %>
-  	  <%= render :partial => 'inline_checkbox', :locals => {:answers => answer, :f => f, :index => index} %>
+    <% @answers.each_with_index do |answer, inner_index| %>
+  	  <%= render :partial => 'inline_checkbox', :locals => {:answers => answer, :f => f, :index => index + inner_index} %>
   	<% end %>
   <% elsif question.mode == 'radio' %>
-  	<% @answers = find_answers(question.id) %>
     <legend><%= h(question.content) %></legend>
   	<%= render :partial => 'inline_radio', :locals => {:answers => @answers, :f => f } %>
   <% end %>

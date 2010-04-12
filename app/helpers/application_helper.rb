@@ -16,5 +16,9 @@ module ApplicationHelper
       render(association.to_s.singularize + "_fields", :f => builder)
     end
     link_to_function(name, h("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"))
-  end    
+  end  
+  
+  def num_replies
+    @survey_replies = SurveyReply.find_by_sql("SELECT count(id) as num FROM survey_replies WHERE approval = 'W'")
+  end  
 end
