@@ -1,28 +1,30 @@
-<table>
-  <tr>
-    <th>Approved</th>
-    <th>Name</th>
-    <th>Question</th>
-    <th>Answer</th>
-  </tr>
-<% form_for :survey_reply, @survey_reply, :action => 'update', :name => 'my_form' do |f| %>  
-  <tr>
-    <td>
-      <input type="checkbox"  name="checkAll" id="checkAll" onclick="jqCheckAll2( this.id, 'check' )"/>Check All
-    </td>
-  </tr>
-
-  <% for survey_reply in @survey_replies %>
+<div id="info">
+  <table>
     <tr>
-      <td><%= check_box_tag 'survey_reply[approval]', 'W', false, :class => 'check' %></td>
-      <td><%= h survey_reply.voter_name %></td>
-      <td><%= h survey_reply.question_text %></td>
-      <td><%= h survey_reply.answer_text %></td>
+      <th>Approved</th>
+      <th>Name</th>
+      <th>Question</th>
+      <th>Answer</th>
+    </tr>
+  <% form_for :survey_reply, @survey_reply, :action => 'update', :name => 'my_form' do |f| %>  
+    <tr>
+      <td>
+        <input type="checkbox"  name="checkAll" id="checkAll" onclick="jqCheckAll2( this.id, 'check' )"/>Check All
+      </td>
+    </tr>
+
+    <% for survey_reply in @survey_replies %>
+      <tr>
+        <td><%= check_box_tag 'survey_reply[approval]', 'W', false, :class => 'check' %></td>
+        <td><%= h survey_reply.voter_name %></td>
+        <td><%= h survey_reply.question_text %></td>
+        <td><%= h survey_reply.answer_text %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="2"><%= submit_tag 'Approve' %></td>
+      <td colspan="2"><%= submit_tag 'Reject' %></td>
     </tr>
   <% end %>
-  <tr>
-    <td colspan="2"><%= submit_tag 'Approve' %></td>
-    <td colspan="2"><%= submit_tag 'Reject' %></td>
-  </tr>
-<% end %>
-</table>
+  </table>
+</div>

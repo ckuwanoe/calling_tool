@@ -214,6 +214,20 @@ body {
 	margin-left: 2px;
 	min-height: 250px;
 }
+
+#info {
+	padding: 1em;
+	margin: 1em;
+	background-color: #CCC;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	-opera-border-radius:4px;
+	-khtml-border-radius:4px;
+	border-radius:4px;
+	font-size: 16px;
+	min-height: 300px;
+}
+
 #search {
 	height: 31px;
 	width: 200px;
