@@ -15,9 +15,15 @@ class SurveyRepliesController < ApplicationController
     @voters = Voter.find_by_sql(
     ["SELECT * FROM voters WHERE list_id = ? AND voters.id NOT IN 
       (SELECT voter_id FROM survey_replies WHERE user_id = ?)  LIMIT 1", params[:list], USERID])
+    
+    if @voters.size < 1
+      redirect_to :action => 'finish'
+    end
+    
     @previous_survey_replies = SurveyReply.find_by_sql(
     ["SELECT v.name, v.sex, v.party, v.phone, s.* FROM survey_replies s LEFT JOIN voters v 
-      on s.voter_id = v.id WHERE s.user_id = ? ORDER BY s.updated_at DESC LIMIT 5", USERID])
+      on s.voter_id = v.id LEFT JOIN lists l on l.id = v.list_id WHERE s.user_id = ? AND v.list_id = ? 
+      ORDER BY s.updated_at DESC LIMIT 5", USERID, params[:list]])
     @survey = Survey.find_by_active('Y')
     @questions = Question.find_all_by_survey_id(@survey.id)
     @survey_reply = SurveyReply.new
@@ -50,20 +56,11 @@ class SurveyRepliesController < ApplicationController
     @voters = Voter.find(@survey_reply.voter_id)
     @previous_survey_replies = SurveyReply.find_by_sql(
     ["SELECT v.name, v.sex, v.party, v.phone, s.* FROM survey_replies s LEFT JOIN voters v 
-      on s.voter_id = v.id WHERE s.user_id = ? ORDER BY s.updated_at DESC LIMIT 5", USERID])
+      on s.voter_id = v.id LEFT JOIN list l on l.id = v.list_id WHERE s.user_id = ? AND v.list_id = ? 
+      ORDER BY s.updated_at DESC LIMIT 5", USERID, @list.id])
     @survey = Survey.find_by_active('Y')
     @questions = Question.find_all_by_survey_id(@survey.id)
-    render :action => 'new', :params => {:view => params[:view]}
-    #for question in @questions do
-    #  if question.mode == 'checkbox'
-    #    @answers = Answer.find_all_by_question_id(question.id)
-    #    @answers.size.times do
-    #      @survey_reply.responses.build
-    #    end
-    #  else
-    #    @survey_reply.responses.build
-    #  end
-    #end      
+    render :action => 'new', :params => {:view => params[:view]}     
   end
   
   def update
@@ -82,6 +79,13 @@ class SurveyRepliesController < ApplicationController
     @survey_replies.destroy
     flash[:notice] = "Successfully destroyed survey replies."
     redirect_to survey_replies_url
+  end
+
+  def manage
+    @survey_replies = SurveyReply.find_by_sql(
+    ["SELECT v.name, v.sex, v.party, v.phone, s.* FROM survey_replies s LEFT JOIN voters v 
+      on s.voter_id = v.id LEFT JOIN lists l on l.id = v.list_id WHERE s.user_id = ? AND v.list_id = ? 
+      ORDER BY s.updated_at ASC", USERID, params[:list]])
   end
 
   def find_answers(id)

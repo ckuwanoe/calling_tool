@@ -48,7 +48,7 @@
               <% if params[:controller] == 'admin' or params[:controller] == 'surveys' %>
                 <%= render :partial => 'admin/links' %>
               <% end %>
-              <% if params[:controller] == 'survey_replies' %>
+              <% if params[:controller] == 'survey_replies' and params[:action] != 'finish' %>
                 <%= render :partial => 'survey_replies/inline_previous_replies' %>
               <% end %>
           </div><!--end sidebar-->

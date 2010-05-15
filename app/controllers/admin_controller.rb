@@ -18,10 +18,12 @@ class AdminController < ApplicationController
        @voter.van_id = row[0]
        @voter.name = row[2] + ' ' + row[1]
        @voter.address = row[5]
+       @voter.city = row[6]
        @voter.phone = row[10]
        @voter.email = row[11]
        @voter.party = row[12]
        @voter.sex = row[13]
+       @voter.age = row[14]
        @voter.level = params[:list][:level]
        @voter.import_date = Time.now.strftime("%Y-%m-%d")
        @voter.voter_type = params[:list][:voter_type]

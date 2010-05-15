@@ -21,4 +21,9 @@ module ApplicationHelper
   def num_replies
     @survey_replies = SurveyReply.find_by_sql("SELECT count(id) as num FROM survey_replies WHERE approval = 'W'")
   end  
+  
+  def age(dob)
+    now = Time.now.utc.to_date
+    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+  end
 end

@@ -20,29 +20,21 @@ class ListsController < ApplicationController
   end
   
   def create    
-    # create the dataset
     @list = List.new(params[:list])
     @list.user_id = USERID
-  
-    # check to see if the save is successful
     success = @list && @list.save   
-    
     #if success.empty?
     #  flash[:error] = "There was a problem creating the list.  Please contact support."
     #  return false
     #end
-    
-    # pull list of voters
     @voters = Voter.find(:all, :limit => @list.num_calls, :conditions => ["list_id is NULL AND level = ?", @list.level])
-    
-    # update voters so we know they're checked out
     for voter in @voters
       voter.list_id = @list.id
       voter.last_updated = Time.now.strftime("%Y-%m-%d %H:%M:%S")
       voter.save
     end
     
-    redirect_to survey_replies_url
+    redirect_to :controller => 'survey_replies'
   end
   
   def edit
@@ -67,13 +59,18 @@ class ListsController < ApplicationController
   end 
   
   def check_list
-    # make sure the user does not already have a list created
     @check = List.find(:all, :conditions => ["user_id = ?", USERID])
-    
-    # if the user does have a list, output error and exit
     if @check.empty?
       return false
-    end
-    return true   
+    else
+      responded = List.find_by_sql(["SELECT count(s.id) as num FROM voters AS v LEFT JOIN 
+      survey_replies AS s ON v.id = s.voter_id LEFT JOIN lists AS l ON l.id = v.list_id WHERE l.id = ?", @check[0].id])
+      count = Voter.find_by_sql(["SELECT count(id) as num FROM voters WHERE list_id = ?", @check[0].id])
+      if responded[0].num == count[0].num
+        return false
+      else
+        return true
+      end
+    end   
   end
 end
